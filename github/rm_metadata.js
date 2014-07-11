@@ -26,7 +26,10 @@ for(var i = 0; i < all_issues.length; i++) {
 	var item_metadata = all_issues[i].getElementsByClassName("list-group-item-meta")
 	var item_avatar = all_issues[i].getElementsByClassName("assignee tooltipped tooltipped-w")
 	var item_labels = all_issues[i].getElementsByClassName("labels")
-	item_metadata[0].parentNode.removeChild(item_metadata[0])
-	item_avatar[0].parentNode.removeChild(item_avatar[0])
-	item_labels[0].parentNode.removeChild(item_labels[0])
+	if(item_metadata[0])
+		item_metadata[0].parentNode.removeChild(item_metadata[0])
+	if(item_avatar[0])
+		item_avatar[0].parentNode.removeChild(item_avatar[0])
+	if(item_labels[0])
+		item_labels[0].parentNode.removeChild(item_labels[0])
 }
