@@ -20,8 +20,7 @@
 // Removes unnecessary random metadata from a GitHub Issue list.
 // Tested only via browser console.
 
-var issue_list = document.getElementsByClassName("list-group issue-list-group")
-var all_issues = issue_list[0].getElementsByClassName("list-group-item issue-list-item js-list-browser-item js-navigation-item read selectable")
+var all_issues = document.getElementsByClassName("list-group-item issue-list-item js-list-browser-item js-navigation-item read selectable")
 for(var i = 0; i < all_issues.length; i++) {
 	var item_metadata = all_issues[i].getElementsByClassName("list-group-item-meta")
 	var item_avatar = all_issues[i].getElementsByClassName("assignee tooltipped tooltipped-w")
