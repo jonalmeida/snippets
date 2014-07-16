@@ -2,6 +2,8 @@
 
 # Default git directory
 git_dir=~/git
+# Default remote
+git_remote="origin"
 
 if [[ $1 != "" ]]; then
     # Path is passed as first argument
@@ -12,6 +14,12 @@ if [[ $1 != "" ]]; then
         exit
     fi
     git_dir=$1
+fi
+
+if [[ $2 != "" ]]; then
+    # Second argument is not empty
+    # (Should contain a branch)
+    git_remote=$2
 fi
 
 echo "Changing directory to $git_dir"
@@ -29,15 +37,15 @@ for dir in */; do
     current_branch=`git rev-parse --abbrev-ref HEAD`
     echo "current_branch = $current_branch"
     echo "---"
-    echo "git rebase origin/$current_branch"
-    git rebase origin/$current_branch
+    echo "git rebase $git_remote/$current_branch"
+    git rebase $git_remote/$current_branch
     if [[ $? != 0 ]]; then
         echo "---"
         echo "git stash"
         git stash
         echo "---"
-        echo "git rebase origin/$current_branch"
-        git rebase origin/$current_branch
+        echo "git rebase $git_remote/$current_branch"
+        git rebase $git_remote/$current_branch
         second_attempt=$?
         echo "---"
         echo "git stash pop"
