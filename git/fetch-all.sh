@@ -6,17 +6,17 @@ git_dir=~/git
 git_remote="origin"
 
 function helpmenu {
-    echo "Usage example:"
-    echo "./fetch-all.sh ~/directory_of_git_repos origin"
+    echo "USAGE EXAMPLE:"
+    echo "    fetch-all.sh ~/directory_of_git_repos origin"
 }
 
 function setDir {
     if [[ $checkDir != "" ]]; then
         # Path is passed as first argument
-        ls $checkDir &>2
+        ls $checkDir 1>&2
         if [[ $? != 0 ]]; then
             # Path isn't valid
-            echo "cannot access $1: No such directory"
+            echo "Cannot access $1: No such directory"
             exit
         fi
         git_dir=$checkDir
@@ -35,24 +35,20 @@ while getopts "hd:r:" OPTION
 do
     case $OPTION in
         h)
-            echo "You set flag -h"
             helpmenu
             exit
             ;;
         d)
-            echo "Sets directory of git repos"
             checkDir=$OPTARG
             setDir
-            break
+            # break
             ;;
         r)
-            echo "Sets directory of git repos"
             checkRemote=$OPTARG
             setRemote
-            break
+            # break
             ;;
         \?)
-            echo "Used for the help menu"
             helpmenu
             exit
             ;;
