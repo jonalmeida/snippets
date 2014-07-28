@@ -20,15 +20,15 @@
 // Removes unnecessary random metadata from a GitHub Issue list.
 // Tested only via browser console.
 
-var all_issues = document.getElementsByClassName("list-group-item issue-list-item js-list-browser-item js-navigation-item read selectable")
-for(var i = 0; i < all_issues.length; i++) {
-	var item_metadata = all_issues[i].getElementsByClassName("list-group-item-meta")
-	var item_avatar = all_issues[i].getElementsByClassName("assignee tooltipped tooltipped-w")
-	var item_labels = all_issues[i].getElementsByClassName("labels")
+var all_issues = document.getElementsByClassName("table-list table-list-bordered table-list-issues js-selectable-issue-list js-navigation-container js-active-navigation-container")[0]
+for (var i = 0; i < all_issues.childElementCount; i++) {
+	var item_metadata = all_issues.children[i].getElementsByClassName("issue-meta")
+	var item_labels = all_issues.children[i].getElementsByClassName("labels css-truncate")
+	var item_avatar = all_issues.children[i].getElementsByClassName("table-list-cell table-list-cell-avatar")
 	if(item_metadata[0])
 		item_metadata[0].parentNode.removeChild(item_metadata[0])
 	if(item_avatar[0])
 		item_avatar[0].parentNode.removeChild(item_avatar[0])
 	if(item_labels[0])
 		item_labels[0].parentNode.removeChild(item_labels[0])
-}
+};
