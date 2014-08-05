@@ -65,6 +65,10 @@ for dir in */; do
     echo "---"
     echo "git fetch"
     git fetch
+    if [[ $? != 0]]; then
+        echo "Not a git repo -> $dir"
+        continue;
+    fi
     echo "---"
     echo "git rev-parse --abbrev-ref HEAD"
     current_branch=`git rev-parse --abbrev-ref HEAD`
