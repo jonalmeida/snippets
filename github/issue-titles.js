@@ -24,6 +24,6 @@ for(var i =0; i < 100; i++) {
 	var str="issue_"+i;
 	var issue = document.getElementById(str);
 	if(issue) {
-		console.log(issue.getElementsByClassName("js-navigation-open")[0].text + " (#" + i + ")");
+		console.log(issue.getElementsByClassName("js-navigation-open")[0].text.trim() + " (#" + i + ")");
 	}
 }
