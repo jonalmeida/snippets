@@ -20,7 +20,7 @@
 // Removes unnecessary random metadata from a GitHub Issue list.
 // Tested only via browser console.
 
-var all_issues = document.getElementsByClassName("table-list table-list-bordered table-list-issues js-selectable-issue-list js-navigation-container js-active-navigation-container")[0]
+var all_issues = document.getElementsByClassName("table-list table-list-bordered table-list-issues js-navigation-container js-active-navigation-container")[0]
 for (var i = 0; i < all_issues.childElementCount; i++) {
 	var item_metadata = all_issues.children[i].getElementsByClassName("issue-meta")
 	var item_labels = all_issues.children[i].getElementsByClassName("labels css-truncate")
